@@ -1,7 +1,6 @@
 import re
 import unicodedata
 
-import pandas as pd
 import plotly.graph_objects as go
 
 # ----------------------------------------------------------------------------
@@ -480,13 +479,6 @@ def figura_arbol(tablero, ancho_rama=190, alto_nivel=62):
     )
     return fig
 
-
-def mostrar_figura(fig):
-    """Compatible con versiones antiguas y nuevas de Streamlit."""
-    try:
-        st.plotly_chart(fig, width="content")
-    except TypeError:
-        st.plotly_chart(fig, use_container_width=False)
 
 
 # ----------------------------------------------------------------------------
