@@ -64,16 +64,16 @@ def limpiar(texto):
 
 
 class TablaAtomos:
-    """Misma idea escrita igual -> mismo átomo (se ignoran mayúsculas, acentos y puntuación)."""
+    """se ignoran mayúsculas, acentos y puntuación."""
 
-    def _init_(self):
+    def __init__(self):
         self.por_clave = {}  # clave -> letra
         self.significado = {}  # letra -> texto original
 
     def obtener(self, texto):
         texto = limpiar(texto)
         if not texto:
-            raise ValueError("Hay una proposición vacía (revisa conectores sobrantes).")
+            raise ValueError("Hay una proposición que esta vacía.")
         clave = sin_acentos(texto).lower()
         if clave not in self.por_clave:
             n = len(self.por_clave)
@@ -163,7 +163,7 @@ def separar_reglas(texto):
 # 3. TABLERO SEMÁNTICO
 # ----------------------------------------------------------------------------
 class Nodo:
-    def _init_(self, idx, formula, padre=None, etiqueta=""):
+    def __init__(self, idx, formula, padre=None, etiqueta=""):
         self.idx = idx
         self.formula = formula
         self.padre = padre
@@ -213,7 +213,7 @@ def clasificar(f):
 class Tablero:
     MAX_NODOS = 1500
 
-    def _init_(self, formulas, limite_pasos=None):
+    def __init__(self, formulas, limite_pasos=None):
         self.nodos = []
         self.pasos = []
         self.truncado = False
@@ -402,7 +402,7 @@ def informe_texto(atomos, tablero):
 
 
 # ----------------------------------------------------------------------------
-# 4. VISUALIZACIÓN CON PLOTLY
+# 4. VISUALIZACIÓN
 # ----------------------------------------------------------------------------
 VERDE, ROJO, GRIS, AZUL = "#2e7d32", "#c62828", "#78909c", "#1565c0"
 
